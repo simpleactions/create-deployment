@@ -1,0 +1,40 @@
+name: 'Create a Deployment'
+description: 'Create a Deployment'
+author: 'Sergio Garcia'
+branding:
+  icon: 'package'
+  color: 'blue'
+inputs:
+  github_token:
+    description: 'The GitHub token (if not provided the environment variable GITHUB_TOKEN will be used instead)'
+    required: false
+  ref:
+    description: 'The ref'
+    required: false
+  task:
+    description: 'The task name'
+    required: false
+  description:
+    description: 'The description'
+    required: true
+  environment:
+    description: 'The environment name'
+    required: true
+  auto_merge:
+    description: 'Should we try to merge with default branch'
+    required: false
+  transient_environment:
+    description: 'Is this a transient environment'
+    required: false
+  production_environment:
+    description: 'Is this a production environment'
+    required: false
+  required_contexts:
+    description: 'Check to wait for this deployment (separate multiple context with a semicolon - ;)'
+    required: false
+outputs:
+  deployment_id:
+    description: 'The deployment id'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
